@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Countdown Widget</title>
+<title>Responsive Countdown Widget</title>
 
 <style>
 
@@ -23,17 +23,33 @@ html, body {
 }
 
 .widget {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
+
+    padding: 1vw;
+
+    box-sizing: border-box;
 }
 
 .title {
 
     color: #556B2F;
 
-    font-size: 34px;
+    font-size: clamp(18px, 5vw, 42px);
+
     font-weight: bold;
 
-    margin-bottom: 8px;
+    line-height: 1.1;
+
+    margin-bottom: 0.4em;
 
     text-shadow: 0 0 10px rgba(85,107,47,0.35);
 }
@@ -42,9 +58,11 @@ html, body {
 
     color: #556B2F;
 
-    font-size: 22px;
+    font-size: clamp(12px, 3vw, 24px);
 
     opacity: 0.9;
+
+    line-height: 1.2;
 }
 
 </style>
