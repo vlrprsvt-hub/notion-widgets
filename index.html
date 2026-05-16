@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Cozy Calendar</title>
+
+<style>
+body {
+    margin: 0;
+    background: transparent;
+    font-family: Georgia, serif;
+}
+
+.widget {
+    width: 260px;
+    background: #F4F1E8;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.header {
+    background: #556B2F;
+    color: white;
+    padding: 14px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.calendar {
+    padding: 16px;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.day-name {
+    color: #777;
+    font-size: 12px;
+}
+
+.day {
+    padding: 6px;
+    border-radius: 999px;
+}
+
+.today {
+    background: #556B2F;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="widget">
+
+<div class="header" id="month"></div>
+
+<div class="calendar">
+
+<div class="days" id="calendar"></div>
+
+</div>
+</div>
+
+<script>
+
+const calendar = document.getElementById("calendar");
+const monthLabel = document.getElementById("month");
+
+const now = new Date();
+
+const monthNames = [
+"January","February","March","April","May","June",
+"July","August","September","October","November","December"
+];
+
+monthLabel.innerText =
+monthNames[now.getMonth()] + " " + now.getFullYear();
+
+const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
+const dayNames = ["S","M","T","W","T","F","S"];
+
+dayNames.forEach(day => {
+    const el = document.createElement("div");
+    el.className = "day-name";
+    el.innerText = day;
+    calendar.appendChild(el);
+});
+
+for(let i = 0; i < firstDay.getDay(); i++) {
+    const empty = document.createElement("div");
+    calendar.appendChild(empty);
+}
+
+for(let day = 1; day <= lastDay.getDate(); day++) {
+
+    const el = document.createElement("div");
+    el.className = "day";
+    el.innerText = day;
+
+    if(day === now.getDate()) {
+        el.classList.add("today");
+    }
+
+    calendar.appendChild(el);
+}
+
+</script>
+
+</body>
+</html>
