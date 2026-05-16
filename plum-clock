@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Cozy Clock</title>
+
+<style>
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: #151515;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+}
+
+.clock {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.time-box {
+    width: 90px;
+    height: 110px;
+    background: linear-gradient(
+        to bottom,
+        #5A1630,
+        #3B0D20
+    );
+
+    border-radius: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #F8F1E7;
+    font-size: 64px;
+    font-weight: bold;
+
+    box-shadow:
+        0 0 20px rgba(90,22,48,0.4),
+        inset 0 2px 10px rgba(255,255,255,0.05);
+}
+
+.separator {
+    color: #7A1F42;
+    font-size: 64px;
+    font-weight: bold;
+
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.4;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="clock">
+
+<div class="time-box" id="hours"></div>
+
+<div class="separator">:</div>
+
+<div class="time-box" id="minutes"></div>
+
+</div>
+
+<script>
+
+function updateClock() {
+
+    const now = new Date();
+
+    let hours = now.getHours().toString().padStart(2, '0');
+    let minutes = now.getMinutes().toString().padStart(2, '0');
+
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+}
+
+updateClock();
+
+setInterval(updateClock, 1000);
+
+</script>
+
+</body>
+</html>
