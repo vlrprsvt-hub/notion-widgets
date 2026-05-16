@@ -80,8 +80,10 @@ const monthLabel = document.getElementById("month");
 const now = new Date();
 
 const monthNames = [
-"January","February","March","April","May","June",
-"July","August","September","October","November","December"
+"Январь","Февраль","Март",
+"Апрель","Май","Июнь",
+"Июль","Август","Сентябрь",
+"Октябрь","Ноябрь","Декабрь"
 ];
 
 monthLabel.innerText =
@@ -90,7 +92,7 @@ monthNames[now.getMonth()] + " " + now.getFullYear();
 const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
 const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
 
-const dayNames = ["S","M","T","W","T","F","S"];
+const dayNames = ["П","В","С","Ч","П","С","В"];
 
 dayNames.forEach(day => {
     const el = document.createElement("div");
@@ -99,7 +101,7 @@ dayNames.forEach(day => {
     calendar.appendChild(el);
 });
 
-for(let i = 0; i < firstDay.getDay(); i++) {
+let startDay = firstDay.getDay(); startDay = startDay === 0 ? 6 : startDay - 1;  for(let i = 0; i < startDay; i++) {
     const empty = document.createElement("div");
     calendar.appendChild(empty);
 }
