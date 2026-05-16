@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Countdown Widget</title>
+
+<style>
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+    background: #2F3438;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    font-family: Georgia, serif;
+}
+
+.widget {
+    text-align: center;
+}
+
+.title {
+
+    color: #556B2F;
+
+    font-size: 34px;
+    font-weight: bold;
+
+    margin-bottom: 8px;
+
+    text-shadow: 0 0 10px rgba(85,107,47,0.35);
+}
+
+.countdown {
+
+    color: #556B2F;
+
+    font-size: 22px;
+
+    opacity: 0.9;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="widget">
+
+    <div class="title">
+        выпускной
+    </div>
+
+    <div class="countdown" id="countdown">
+    </div>
+
+</div>
+
+<script>
+
+const targetDate = new Date("2026-06-26T00:00:00");
+
+function updateCountdown() {
+
+    const now = new Date();
+
+    const diff = targetDate - now;
+
+    const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    const weeks = Math.floor(totalDays / 7);
+    const days = totalDays % 7;
+
+    document.getElementById("countdown").innerText =
+        `${weeks} н ${days} д`;
+}
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
+
+</script>
+
+</body>
+</html>
